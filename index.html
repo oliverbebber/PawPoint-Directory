@@ -16,5 +16,50 @@
            <p>This site will help pet owners find shelters, veterinarians, and other resources.</p> 
         </div>
     </main>
+
+    <script>
+        const netlifyFunctionURL = "https://pawpoint-directory.netlify.app/.netlify/functions/getPetfinderToken"; // Replace with your actual function URL
+
+        async function getAccessToken() {
+            const response = await fetch(netlifyFunctionURL);
+            const data = await response.json();
+            const accessToken = data.accessToken;
+
+            console.log("Access Token:", accessToken);
+            getShelters(accessToken);
+        }
+
+        async function getShelters(accessToken) {
+            const response = await fetch("https://api.petfinder.com/v2/organizations?location=37902", {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            const data = await response.json();
+            displayShelters(data.organizations);
+        }
+
+        function displayShelters(shelters) {
+            const container = document.getElementById("shelters");
+            container.innerHTML = "";
+
+            shelters.forEach(shelter => {
+                const div = document.createElement("div");
+                div.classList.add("shelter-card");
+                div.innerHTML = `
+                    <h3>${shelter.name}</h3>
+                    <p>${shelter.address.address1 || "No Address Available"}</p>
+                    <p>${shelter.phone || "No Phone Number"}</p>
+                    <a href="${shelter.website}" target="_blank">Visit Website</a>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        getAccessToken();
+    </script>
 </body>
 </html>
