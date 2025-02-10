@@ -50,7 +50,7 @@
         }
 
         async function getShelters(accessToken, location) {
-            const response = await fetch("https://api.petfinder.com/v2/organizations?location=${location}", { // Default zip code search needs to be resolved to allow users to search for organizations in their area
+            const response = await fetch(`https://api.petfinder.com/v2/organizations?location=${location}`, { // Default zip code search needs to be resolved to allow users to search for organizations in their area
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${accessToken}`,
