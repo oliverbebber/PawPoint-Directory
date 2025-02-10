@@ -82,6 +82,8 @@
                 div.innerHTML = `
                     <h3>${shelter.name}</h3>
                     <p>${shelter.address.address1 || "No Address Available"}</p>
+                    <p>${shelter.city, shelter.state}</p>
+                    <p>${shelter.postcode}</p>
                     <p>${shelter.phone || "No Phone Number"}</p>
                     <a href="${shelter.website}" target="_blank">Visit Website</a>
                 `;
