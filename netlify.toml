@@ -1,0 +1,7 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[context.production.environment]
+  PETFINDER_API_KEY = "your_api_key"
+  PETFINDER_API_SECRET = "your_api_secret"
