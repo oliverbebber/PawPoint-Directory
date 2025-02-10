@@ -5,3 +5,6 @@
 [context.production.environment]
   PETFINDER_API_KEY = "your_api_key"
   PETFINDER_API_SECRET = "your_api_secret"
+
+[[plugins]]
+package = "@netlify/plugin-functions-install-core"
