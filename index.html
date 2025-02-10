@@ -35,8 +35,18 @@
             const accessToken = data.accessToken;
 
             console.log("Access Token:", accessToken);
-            const location = document.getElementById("location").value;
-            getShelters(accessToken, location);
+            const location = document.getElementById("location").value.trim();
+
+            // CHeck if location is empty
+            if (!location) {
+                alert("Please enter a valid location.");
+                return;
+            }
+
+            // Ensure proper formatting of location for the URL
+            const formattedLocation = endcodeURIComponent(location);
+            
+            getShelters(accessToken, formattedLocation);
         }
 
         async function getShelters(accessToken, location) {
@@ -48,6 +58,11 @@
                 }
             });
 
+            if (!response.ok) {
+                console.error("Error fetching shelters:", response.statusText);
+                return;
+            }
+
             const data = await response.json();
             displayShelters(data.organizations);
         }
@@ -55,6 +70,11 @@
         function displayShelters(shelters) {
             const container = document.getElementById("shelters");
             container.innerHTML = "";
+
+            if (shelters.length === 0) {
+                container.innerHTML = "<p>No shelters found for the provided location.</p>";
+                return;
+            }
 
             shelters.forEach(shelter => {
                 const div = document.createElement("div");
