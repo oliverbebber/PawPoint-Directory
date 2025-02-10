@@ -14,6 +14,12 @@
         <div class="container">
            <h1>Welcome to the PawPoint Directory</h1>
            <p>This site will help pet owners find shelters, veterinarians, and other resources.</p> 
+
+            <!-- Search Form -->
+            <form id="searchForm">
+                <input type="text" id="location" placeholder="Enter city, state, or zip code" />
+                <button type="submit">Search</button>
+            </form>
         </div>
 
         <div id="shelters"></div> <!-- This is where the shelter data will be displayed -->
@@ -29,11 +35,12 @@
             const accessToken = data.accessToken;
 
             console.log("Access Token:", accessToken);
-            getShelters(accessToken);
+            const location = document.getElementById("location").value;
+            getShelters(accessToken, location);
         }
 
-        async function getShelters(accessToken) {
-            const response = await fetch("https://api.petfinder.com/v2/organizations?location=37902", { // Default zipcode search needs to be resolved to allow users to search for organizations in their area
+        async function getShelters(accessToken, location) {
+            const response = await fetch("https://api.petfinder.com/v2/organizations?location=${location}", { // Default zip code search needs to be resolved to allow users to search for organizations in their area
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${accessToken}`,
@@ -61,7 +68,10 @@
                 container.appendChild(div);
             });
         }
-
+        
+        // Event listener for form submission
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();
         getAccessToken();
     </script>
 </body>
