@@ -20,10 +20,18 @@ exports.handler = async function () {
         }
 
         const data = await response.json();
+
+        // Adding CORS headers to the response
         return {
             statusCode: 200,
-            body: JSON.stringify(data)
+            headers: {
+                "Access-Control-Allow-Origin": "*",  // You can replace '*' with your GitHub Pages URL if needed
+                "Access-Control-Allow-Methods": "GET, POST",  // Allowing the GET and POST methods
+                "Access-Control-Allow-Headers": "Content-Type",  // Allowing Content-Type header
+            },
+            body: JSON.stringify({ accessToken: data.access_token }),
         };
+        
     } catch (error) {
         return {
             statusCode: 500,
