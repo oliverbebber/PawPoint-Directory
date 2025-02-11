@@ -3,13 +3,8 @@
   functions = "netlify/functions"
 
 [functions]
-  # Tell Netlify to bundle functions using esbuild
-  # When bundled, functions can resolve their dependencies using the root package.json
   node_bundler = "esbuild"
-  
-  # Optionally, list modules you want to treat as external (i.e. not bundled)
-  # If you list them as external, ensure they are available at runtime.
   external_node_modules = ["node-fetch", "dotenv"]
 
 [[plugins]]
-package = "@netlify/plugin-functions-install-core"
+  package = "@netlify/plugin-functions-install-core"
