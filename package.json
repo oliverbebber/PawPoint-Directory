@@ -1,7 +1,7 @@
 {
   "name": "pawpoint-directory",
   "version": "1.0.0",
-  "description": "A pet directory for shelters and veterinarians",
+  "description": "A directory for pet owners",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
