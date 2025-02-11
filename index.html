@@ -71,21 +71,41 @@
             const container = document.getElementById("shelters");
             container.innerHTML = "";
 
-            if (shelters.length === 0) {
+            if (!shelters || shelters.length === 0) {
                 container.innerHTML = "<p>No shelters found for the provided location.</p>";
                 return;
             }
 
             shelters.forEach(shelter => {
+                // Destructure fields from the shelter data
+                const { 
+                    name,
+                    address = {},
+                    email,
+                    phone,
+                    website
+                } = shelter;
+
+                // Extract city, state, and zip (postcode) from the address object
+                const {
+                    address1,
+                    city,
+                    state,
+                    postcode // sometimes called "zip" or "zipcode" in other APIs
+                } = address;
+                
                 const div = document.createElement("div");
                 div.classList.add("shelter-card");
                 div.innerHTML = `
-                    <h3>${shelter.name}</h3>
-                    <p>${shelter.address.address1 || "No Address Available"}</p>
-                    <p>${shelter.city, shelter.state}</p>
-                    <p>${shelter.postcode}</p>
-                    <p>${shelter.phone || "No Phone Number"}</p>
-                    <a href="${shelter.website}" target="_blank">Visit Website</a>
+                    <h3>${name}</h3>
+                    <p>${address1 || "No Address Available"}</p>
+                    <p>
+                        ${city || "City N/A"}, ${state || "State N/A"}
+                        ${postcode ? `, ${postcode}` : ""}
+                    </p>
+                    <p>Email: ${email || "No Email Available"}</p>
+                    <p>${phone || "No Phone Number"}</p>
+                    <a href="${website || '#'}" target="_blank">Visit Website</a>
                 `;
                 container.appendChild(div);
             });
