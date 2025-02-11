@@ -9,13 +9,8 @@ exports.handler = async function () {
             },
             body: new URLSearchParams({
                 grant_type: 'client_credentials',
-                // OG API KEYS
                 client_id: process.env.PETFINDER_API_KEY,
                 client_secret: process.env.PETFINDER_API_SECRET
-                
-                // BACKUP
-                // client_id: process.env.PETFINDER_API_KEY_BU, 
-                // client_secret: process.env.PETFINDER_API_SECRET_BU
             })
         });
 
