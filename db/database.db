@@ -1,0 +1,3 @@
+If you are using SQLite as your database, this file is the actual database file.
+
+Note: add this file to your .gitignore so that you don’t commit it, especially if it’s generated or can be re-created from your migrations.
