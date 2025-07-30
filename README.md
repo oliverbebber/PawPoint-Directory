@@ -1,8 +1,11 @@
 # PawPoint-Directory
 
-PawPoint Directory is a project I decided to start after my cat went missing, which led me to realize there wasn't an easy way to search for vet & shelter contact information. Google searches were time exhaustive and when you're searching for a missing pet, time is critical. 
-
+PawPoint Directory is a project I decided to start after my cat went missing, which led me to realize there wasn't an easy way to search for vet & shelter contact information. Google searches were time exhaustive and when you're searching for a missing pet, time is critical.  
 This is a work in progress, so please bare with me while I continue building out my vision for this directory.
+
+<p align="center">
+  <img src="assets/PawPointDirectory.png" alt="Directory Homepage" />
+</p>
 
 ## Features  
 - Searchable directory by city & state or zip code.
