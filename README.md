@@ -7,6 +7,10 @@ This is a work in progress, so please bare with me while I continue building out
   <img src="assets/PawPointDirectory.png" alt="Directory Homepage" />
 </p>
 
+## Preview
+
+Check out the live app here: [PawPoint Directory Live Demo](https://oliverbebber.github.io/PawPoint-Directory/)
+
 ## Features  
 - Searchable directory by city & state or zip code.
 - Integration with Petfinder API for shelter data
