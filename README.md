@@ -4,5 +4,10 @@ PawPoint Directory is a project I decided to start after my cat went missing, wh
 
 This is a work in progress, so please bare with me while I continue building out my vision for this directory.
 
+## Features  
+- Searchable directory by city & state or zip code.
+- Integration with Petfinder API for shelter data
+- User-friendly interface to locate local resources quickly
+
 ## Petfinder API
 This app is powered by Petfinder. The Petfinder API offers users a simple way to access the Petfinder database to obtain details on animal shelters, individual animals, and breed info. It supports up to 1,000 requests per day, with a rate limit of 50 requests/second. To get started, you'll need to request access https://www.petfinder.com/developers/v2/docs/
